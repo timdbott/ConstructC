@@ -82,7 +82,7 @@
         	schAry = [],
         	schedule, date, hour, i, j, m, o;
 
-        //console.log('initializing CapacitySchedulesUsersHrs.getSchedules...from ' + event.getSource() + ' - startDate: ' + startDate);
+        console.log('initializing CapacitySchedulesUsersHrs.getSchedules...from ' + event.getSource() + ' - startDate: ' + startDate);
         
                 // get schedules array of objects
                 sArray = component.get("v.scheduleRcds");
