@@ -1,9 +1,9 @@
 public with sharing class ScheduleController {
 
     @AuraEnabled
-    public static String currentUserId() {
+    public static User currentUserId() {
         Id userId = UserInfo.getUserId();
-        return [SELECT Id FROM User WHERE Id = :userId];
+        return [SELECT Id, srNetwork_Team__c FROM User WHERE Id = :userId];
     }
 
 	@AuraEnabled

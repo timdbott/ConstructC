@@ -3,6 +3,9 @@
         
 
         var spinner = component.find('rowSpinner');
+
+        helper.retrieveCurrentUser(component, event);
+        
         $A.util.toggleClass(spinner, "slds-show");
 
         // call the controller method that returns schedule__c records for this case
