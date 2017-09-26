@@ -4,6 +4,8 @@
     <aura:attribute name="daysToDisplay" type="Integer"/>
     <aura:attribute name="teams" type="Array"/>
     <aura:attribute name="srnUsers" type="User[]"/>
+    <aura:attribute name="defaultTeam" type="String" />
+    <aura:attribute name="currentUserId" type="String" />
     <aura:handler name="change" action="{!c.doInit}" value="{!v.startDate}"/>
 
     <div>
