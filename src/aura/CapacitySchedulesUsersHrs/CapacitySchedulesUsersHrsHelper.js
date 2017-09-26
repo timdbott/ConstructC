@@ -139,7 +139,7 @@
     
                         } else {
 
-                            console.log('NO MATCH --> date: ' + datesInRange[m].toString() + ' - sDate: ' + sDate.toString() + ' - sOwnerId: ' + sArray[i].OwnerId__c + ' - userId: ' + userId);
+                            //console.log('NO MATCH --> date: ' + datesInRange[m].toString() + ' - sDate: ' + sDate.toString() + ' - sOwnerId: ' + sArray[i].OwnerId__c + ' - userId: ' + userId);
 
                             //hour = 0;
                             //console.log('RESET total hours: ' + hour + ' - NEW schedule date: ' + datesInRange[m] + '--' + sArray[i].Date__c);
@@ -148,7 +148,7 @@
 
                     // push hours into an array
                     schAry.push(schedule);
-                        console.log('sHours: ' + schedule.Hours__c + ' - sDate: ' + schedule.Date__c + ' - sOwnerId: ' + schedule.OwnerId__c);
+                        //console.log('sHours: ' + schedule.Hours__c + ' - sDate: ' + schedule.Date__c + ' - sOwnerId: ' + schedule.OwnerId__c);
                     //schedules.push(hour);
                 }
 				//component.set("v.schedules", schedules);

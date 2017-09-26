@@ -28,6 +28,8 @@
                 component.set("v.srnUsers", allUsers);
                 defaultTeam = component.get("v.defaultTeam");
 
+                console.log('defaultTeam: ' + defaultTeam);
+
                 // put teams into an array of strings
                 if (allUsers === null || allUsers === "" || allUsers === 'null') {
                     console.log('allUsers list is null');
@@ -41,7 +43,6 @@
                             users.push(team);
                         }
 
-                        console.log('name: ' + name + ' - team: ' + team);
                     }
                 } else {
                     for (i = 0, j = allUsers.length; i < j; i++) {
@@ -49,7 +50,7 @@
                         team = allUsers[i].srNetwork_Team__c;
                         users.push(team);
 
-                        console.log('name: ' + name + ' - team: ' + team);
+                        //console.log('name: ' + name + ' - team: ' + team);
                     }
                 }
 
