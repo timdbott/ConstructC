@@ -3,6 +3,7 @@ public with sharing class ScheduleController {
     @AuraEnabled
     public static User currentUserId() {
         Id userId = UserInfo.getUserId();
+        system.debug('currentUserId.Id: ' + userId);
         return [SELECT Id, srNetwork_Team__c FROM User WHERE Id = :userId];
     }
 

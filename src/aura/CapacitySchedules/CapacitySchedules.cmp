@@ -6,6 +6,7 @@
     <aura:attribute name="daysToDisplay" type="Integer"/>
     <aura:attribute name="formattedDateHeader" type="String"/>
     <aura:attribute name="defaultTeam" type="String" />
+    <aura:attribute name="srNetworkTeams" type="Array" />
     <aura:attribute name="currentUserId" type="String" />
     
     <div class="steelcase">
@@ -21,6 +22,18 @@
                 <span>
                     <lightning:buttonIcon aura:id="btn_nextWk" iconName="utility:chevronright" onclick="{!c.changeDate}" alternativeText="next week" />
                 </span>
+            </div>
+
+            <!-- Case Request Type picklist -->
+            <div class="slds-form--horizontal slds-text-align--center slds-p-left--xx-large">
+                <div class="slds-picklist slds-dropdown-trigger slds-dropdown-trigger--click">
+                    <lightning:select name="srNetworkTeams" label="Team  " aura:id="srNetworkTeams" value="{!v.defaultTeam}">
+                        <option text="All" value="All"/>
+                        <aura:iteration var="t" items="{!v.srNetworkTeams}">
+                            <option text="{!t}" value="{!t}"/>
+                        </aura:iteration>
+                    </lightning:select>
+                </div>
             </div>
         </div>
         

@@ -11,11 +11,19 @@
 				console.log('CapacitySchedules.retrieveCurrentUser #query state: ' + state);
 
 				var user = response.getReturnValue(), 
-					name, team;
-
-				component.set("v.currentUserId",user[0].Id);
-				component.set("v.defaultTeam",user[0].srNetwork_Team__c);
-				console.log('CapacitySchedules.retrieveCurrentUser #team: ' + srNetwork_Team__c);
+                    name, team, i, j;
+                    
+                if (user === 'undefined' || user === '') {
+                    console.log('CapacitySchedules.retrieveCurrentUser is null');
+                } else {
+                    component.set("v.currentUserid",user.Id);
+                    component.set("v.defaultTeam",user.srNetwork_Team__c);
+                    //for (i = 0, j = user.length; i < j; i++) {
+                    //    component.set("v.currentUserId",user[i].Id);
+                    //    component.set("v.defaultTeam",user[i].srNetwork_Team__c);
+                    //    console.log('CapacitySchedules.retrieveCurrentUser #team: ' + srNetwork_Team__c);
+                    //}
+                }
 
 			} else {
 				console.log("CapacitySchedules.retrieveCurrentUser Failed with state: " + state);

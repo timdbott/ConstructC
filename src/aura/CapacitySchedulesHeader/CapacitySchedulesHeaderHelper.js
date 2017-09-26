@@ -51,7 +51,7 @@
         //month = d.getMonth() + 1;
         day = d.getDate();
         
-        console.log('CapacitySchedulesHeader.getFormattedDate * date: ' + d + ' day: ' + day);
+        //console.log('CapacitySchedulesHeader.getFormattedDate * date: ' + d + ' day: ' + day);
         
         //month = month.toString().length === 2 ? month : 0 + month.toString();
         if (day === undefined || day === "") {
