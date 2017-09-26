@@ -1,0 +1,24 @@
+<aura:component controller="ScheduleController">
+    <aura:handler name="init" action="{!c.doInit}" value="{!this}"/>
+    <aura:attribute name="startDate" type="Date"/>
+    <aura:attribute name="daysToDisplay" type="Integer"/>
+    <aura:attribute name="userId" type="String"/>
+    <aura:attribute name="scheduleRcds" type="Schedule__c[]"/>
+    <aura:attribute name="userHours" type="Schedule__c[]"/>
+    <aura:handler name="change" action="{!c.doInit}" value="{!v.startDate}"/>
+    <aura:handler name="change" action="{!c.doInit}" value="{!v.scheduleRcds}"/>
+
+        <aura:iteration var="s" items="{!v.userHours}">
+                	<div class="slds-p-horizontal--small slds-size--1-of-1 slds-medium-size--1-of-6 slds-large-size--1-of-12">
+                        <div class="slds-form-element">
+				            <div class="slds-form-element__control" title="{!s.Date__c}">
+				                <ui:outputNumber aura:id="{!s.Id}" 
+				                    class="{!s.Class}" 
+				                    value="{!s.Hours__c}"
+				                    format="0.00"/>
+				            </div>
+				        </div>
+				    </div>
+        </aura:iteration>
+
+</aura:component>

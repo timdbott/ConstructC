@@ -1,0 +1,47 @@
+<aura:component controller="CapacityManagementController" implements="force:appHostable,flexipage:availableForAllPageTypes" access="global" >
+    <aura:attribute name="caseId" type="String"/>
+    <aura:attribute name="userId" type="String"/>
+    <aura:attribute name="searchText" type="String"/>
+    <aura:attribute name="users" type="User[]"/>
+    <aura:registerEvent name="CapacityManagementCaseAssigned" type="c:CapacityManagementCaseAssigned" />
+
+
+	<lightning:input value="{!v.searchText}" 
+		label="Find User" 
+		type="search" 
+		name="search" 
+		onchange="{!c.searchUsers}" />
+
+	<div class="slds-m-top--xx-small slds-hide" aura:id="searchResults">
+
+		<div class="slds-box slds-theme--default">
+
+			<!-- close search results -->
+			<div class="slds-grid slds-grid--align-end">
+				<lightning:buttonIcon iconName="utility:clear" 
+					variant="bare" 
+					alternativeText="close search results"
+					onclick="{!c.hideSearchResults}" />
+			</div>
+
+			<!-- search results -->
+			<aura:iteration var="s" items="{!v.users}">
+				<h3>
+					<lightning:button value="{!s.Id}" 
+						label="{!s.Name}" 
+						variant="variant" 
+						iconName="utility:adduser" 
+						onclick="{!c.handleClick}"/> 
+				</h3>
+				
+			</aura:iteration>
+		</div>
+	</div>
+
+	<div class="slds-m-top--xx-small">
+		<lightning:button variant="neutral" label="Assign" onclick="{! c.assignCase }" />
+	</div>
+
+
+    
+</aura:component>

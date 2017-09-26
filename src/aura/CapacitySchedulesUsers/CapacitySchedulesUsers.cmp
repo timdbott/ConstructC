@@ -1,0 +1,33 @@
+<aura:component controller="ScheduleController">
+    <aura:handler name="init" action="{!c.doInit}" value="{!this}"/>
+    <aura:attribute name="startDate" type="Date"/>
+    <aura:attribute name="daysToDisplay" type="Integer"/>
+    <aura:attribute name="team" type="String"/>
+    <aura:attribute name="srnUsers" type="User[]"/>
+    <aura:attribute name="teamMembers" type="User[]"/>
+    <aura:attribute name="scheduleRcds" type="Schedule__c[]"/>
+    <aura:handler name="change" action="{!c.doInit}" value="{!v.startDate}"/>
+
+
+                <!-- user row -->
+                
+                <aura:iteration var="u" items="{!v.teamMembers}">
+                    <div class="slds-grid slds-p-vertical--xx-small slds-align--absolute-center">
+                        <div class="slds-p-horizontal--small slds-size--1-of-1 slds-medium-size--1-of-6 slds-large-size--2-of-12" style="max-width:10.0rem;min-width:10.0rem">
+
+                            <div class="slds-truncate slds-text-align--right" title="{!u.reportUrl}">
+                                <a target="_blank" href="{!u.reportUrl}" class="slds-has-blur-focus">{!u.Name}</a>
+                            </div>
+
+                        </div>
+
+                            <c:CapacitySchedulesUsersHrs userId="{!u.Id}"
+                                startDate="{!v.startDate}" 
+                                daysToDisplay="{!v.daysToDisplay}"
+                                scheduleRcds="{!v.scheduleRcds}"/>  
+
+                    </div>
+                </aura:iteration>
+        
+
+</aura:component>

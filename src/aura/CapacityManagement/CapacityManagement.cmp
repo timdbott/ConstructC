@@ -1,0 +1,47 @@
+<aura:component controller="CapacityManagementController" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:lightningQuickAction" access="global" >
+    <aura:handler name="init" action="{!c.doInit}" value="{!this}"/>
+    <aura:attribute name="selectedRqstType" type="String"/>
+    <aura:attribute name="caseRqstTypes" type="Array"/>
+    <aura:attribute name="startDate" type="Date"/>
+    <aura:attribute name="daysToDisplay" type="Integer"/>
+    <aura:handler name="change" action="{!c.selectRqstType}" value="{!v.selectedRqstType}"/>
+    
+    <div class="steelcase">
+        <div class="slds-grid slds-m-top--xx-small">
+            <div class="slds-col">
+                <div class="slds-box slds-box--small slds-theme--shade slds-text-align--center">
+                    <!-- Case Request Type picklist -->
+                    <div class="slds-form--horizontal slds-text-align--center">
+                        <div class="slds-picklist slds-dropdown-trigger slds-dropdown-trigger--click">
+                            <lightning:select name="caseRqstType" label="Request Type  " aura:id="caseRqstType" value="{!v.selectedRqstType}">
+                                <option text="All" value="All"/>
+                                <aura:iteration var="t" items="{!v.caseRqstTypes}">
+                                    <option text="{!t}" value="{!t}"/>
+                                </aura:iteration>
+                            </lightning:select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="slds-grid slds-m-top--xx-small">
+            <div class="slds-col">
+
+                <c:CapacityManagementCases caseRqstType="{!v.selectedRqstType}"
+                                       startDate="{!v.startDate}" 
+                                       daysToDisplay="{!v.daysToDisplay}"/>
+            </div>
+        </div>
+
+		<!-- show all srn users and schedules for current user's geo  -->
+        <div class="slds-grid slds-m-top--xx-small">
+            <div class="slds-col">
+                <c:CapacitySchedules />
+            </div>
+        </div>
+
+
+    </div>
+
+</aura:component>

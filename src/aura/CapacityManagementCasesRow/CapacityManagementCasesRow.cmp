@@ -1,0 +1,122 @@
+<aura:component controller="CapacityManagementController" implements="force:appHostable,flexipage:availableForAllPageTypes" access="global" >
+    <aura:attribute name="caseId" type="String" />
+    <aura:attribute name="actId" type="String"/>
+    <aura:attribute name="actName" type="String"/>
+    <aura:attribute name="actCls" type="String"/>
+    <aura:attribute name="oppName" type="String"/>
+    <aura:attribute name="oppAmount" type="String"/>
+    <aura:attribute name="caseType" type="String"/>
+    <aura:attribute name="caseRqstType" type="String"/>
+    <aura:attribute name="caseRqstBy" type="String"/>
+    <aura:attribute name="caseDays" type="String"/>
+    <aura:attribute name="pastCases" type="Case[]"/>
+    <aura:attribute name="hasPastCases" type="Boolean" default="true"/>
+    <aura:handler name="CapacityManagementCaseAssigned" 
+    			event="c:CapacityManagementCaseAssigned"
+    			action="{!c.hideCmp}"
+    			includeFacets="true"/>
+
+    <div class="slds-m-top--small slds-m-bottom--small slds-p-bottom--small slds-border--bottom" aura:id="caseRow">
+    	<div class="">
+        	<div class="slds-grid slds-wrap slds-p-bottom--small scs-pointer slds-grid--vertical-align-center slds-p-horizontal--small" onclick="{!c.showMore}">
+	        	<div style="max-width:10.0rem;min-width:10.0rem" class="slds-p-horizontal--small slds-size--1-of-1 slds-medium-size--1-of-6 slds-large-size--2-of-12">
+	        		<div class="slds-text-align--left slds-truncate">{!v.actName}</div>
+		        </div>
+		        <div style="max-width:10.0rem;min-width:10.0rem" class="slds-p-horizontal--small slds-size--1-of-1 slds-medium-size--1-of-6 slds-large-size--2-of-12">
+	        		<div class="slds-text-align--left slds-truncate">{!v.oppName}</div>
+		        </div>
+		        <div style="max-width:10.0rem;min-width:10.0rem" class="slds-p-horizontal--small slds-size--1-of-1 slds-medium-size--1-of-6 slds-large-size--2-of-12">
+	        		<div class="slds-text-align--left slds-truncate">{!v.caseRqstBy}</div>
+		        </div>
+		        <div style="max-width:10.0rem;min-width:10.0rem" class="slds-p-horizontal--small slds-size--1-of-1 slds-medium-size--1-of-6 slds-large-size--2-of-12">
+	        		<div class="slds-text-align--left slds-truncate">{!v.caseDays}</div>
+		        </div>
+		        <div style="max-width:10.0rem;min-width:10.0rem" class="slds-p-horizontal--small slds-size--1-of-1 slds-medium-size--1-of-6 slds-large-size--2-of-12">
+	        		<div class="slds-text-align--left slds-truncate">{!v.actCls}</div>
+		        </div>
+		        <div style="max-width:10.0rem;min-width:10.0rem" class="slds-p-horizontal--small slds-size--1-of-1 slds-medium-size--1-of-6 slds-large-size--2-of-12">
+	        		<div class="slds-text-align--left slds-truncate"></div>
+		        </div>
+		        <div style="max-width:10.0rem;min-width:10.0rem" class="slds-p-horizontal--small slds-size--1-of-1 slds-medium-size--1-of-6 slds-large-size--2-of-12">
+	        		<div class="slds-text-align--left slds-truncate">{!v.oppAmount}</div>
+		        </div>
+		        <div style="max-width:10.0rem;min-width:10.0rem" class="slds-p-horizontal--small slds-size--1-of-1 slds-medium-size--1-of-6 slds-large-size--2-of-12">
+	        		<div class="slds-text-align--left slds-truncate">{!v.caseRqstType}</div>
+		        </div>
+		    </div>
+		</div>
+			    <!-- hidden more information card -->
+
+		<div class="slds-grid--vertical-align-center slds-hide" aura:id="moreInfo">
+
+			<div>
+        		<lightning:spinner aura:id="caseSpinner" class="slds-show" variant="brand" size="large" alternativeText="spinner"/>
+        	</div>
+
+			<div class="slds-grid slds-wrap slds-grid--pull-padded">
+
+			    <div class="slds-m-horizontal--xx-small slds-size--1-of-1 slds-medium-size--3-of-6 slds-large-size--6-of-12 slds-box slds-theme--shade slds-hide" aura:id="moreInfoCard">
+
+                    <div class="slds-text-heading--medium slds-m-bottom--xx-small">Previous Cases</div>
+                    
+		            <table class="slds-table slds-table--bordered slds-table--cell-buffer slds-no-row-hover" aura:id="pastCasesTable">
+						<thead>
+							<tr class="slds-text-title--caps">
+								<th scope="col">
+									<div class="slds-truncate" title="action"></div>
+								</th>
+								<th scope="col">
+									<div class="slds-truncate" title="Completed By">Completed By</div>
+								</th>
+								<th scope="col">
+									<div class="slds-truncate" title="Completed On">Completed On</div>
+								</th>
+								<th scope="col">
+									<div class="slds-truncate" title="Request Type">Request Type</div>
+								</th>
+							</tr>
+						</thead>
+						<tbody>
+							<aura:iteration var="s" items="{!v.pastCases}">
+								<tr>
+									<td data-label="Assign Case">
+										<lightning:button value="{!s.OwnerId}" variant="neutral" label="Assign" onclick="{!c.assignCase}" />
+									</td>
+									<td data-label="Completed By">
+										<div class="slds-truncate" title="{!s.Owner.Name}">{!s.Owner.Name}</div>
+									</td>
+									<td data-label="Completed On">
+										<div class="slds-truncate" title="{!s.Requested_Completion_Date__c}">{!s.Requested_Completion_Date__c}</div>
+									</td>
+									<td data-label="Request Type">
+										<div class="slds-truncate" title="{!s.Requested_Service__c}">{!s.Requested_Service__c}</div>
+									</td>
+								</tr>
+						    </aura:iteration>
+						</tbody>
+					</table>
+				</div>
+
+					<!-- no cases message -->
+				<div class="slds-m-horizontal--xx-small slds-size--1-of-1 slds-medium-size--2-of-6 slds-large-size--4-of-12 slds-box slds-theme--shade slds-hide" aura:id="noCasesToast">
+					
+                    <div class="slds-text-heading--medium slds-m-bottom--xx-small">Previous Cases</div>
+                    <div class="slds-box slds-theme--info" >
+						
+							<h2>No previous cases for this account</h2>
+					</div>
+			    </div>
+
+			    <div class="slds-m-horizontal--xx-small slds-size--1-of-1 slds-medium-size--2-of-6 slds-large-size--4-of-12 slds-box slds-theme--shade" aura:id="findPersonCard">
+					
+                    <div class="slds-text-heading--medium slds-p-bottom--xx-small slds-m-bottom--xx-small slds-border--bottom">Search for new owner</div>
+                    
+					<c:CapacityManagementCasesUserLookup caseId="{!v.caseId}"/>
+			    </div>
+
+			</div>
+		</div>
+    </div>
+
+    
+</aura:component>

@@ -1,0 +1,37 @@
+<aura:component controller="ScheduleController" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:lightningQuickAction" access="global" >
+	<!--  main component to show all srn users and their schedule__c hours grouped by team -->
+	<aura:handler name="init" action="{!c.doInit}" value="{!this}"/>
+    <aura:attribute name="caseRqstTypes" type="Array"/>
+    <aura:attribute name="startDate" type="Date"/>
+    <aura:attribute name="daysToDisplay" type="Integer"/>
+    <aura:attribute name="formattedDateHeader" type="String"/>
+    
+    <div class="steelcase">
+        <div class="slds-text-heading--large slds-align--absolute-center slds-m-bottom--large slds-border--bottom slds-box slds-box--small slds-theme--shade slds-text-align--center">Team Schedules</div>
+        <div class="slds-grid slds-m-top--small slds-p-bottom--small slds-border--bottom">
+            <div class="slds-size--3-of-12 slds-align--absolute-center">
+                <span>
+                	<lightning:buttonIcon aura:id="btn_prevWk" iconName="utility:chevronleft" onclick="{!c.changeDate}" alternativeText="previous week" />
+                </span>
+                <span class="slds-text-title slds-p-left--xx-small slds-p-right--xx-small">
+                	{!v.formattedDateHeader}
+                </span>
+                <span>
+                    <lightning:buttonIcon aura:id="btn_nextWk" iconName="utility:chevronright" onclick="{!c.changeDate}" alternativeText="next week" />
+                </span>
+            </div>
+        </div>
+        
+        <div class="slds-m-top--small slds-m-bottom--small">
+            <c:CapacitySchedulesHeader header="" startDate="{!v.startDate}" daysToDisplay="{!v.daysToDisplay}"/>
+        </div>
+
+        <div class="slds-m-top--small slds-m-bottom--small">
+            <c:CapacitySchedulesTeams startDate="{!v.startDate}" daysToDisplay="{!v.daysToDisplay}"/>
+        </div>
+
+
+
+
+    </div>
+</aura:component>

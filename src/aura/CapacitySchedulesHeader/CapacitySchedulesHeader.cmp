@@ -1,0 +1,38 @@
+<aura:component >
+    <aura:handler name="init" action="{!c.doInit}" value="{!this}"/>
+    <aura:attribute name="startDate" type="Date"/>
+    <aura:attribute name="daysToDisplay" type="Integer"/>
+    <aura:attribute name="dates" type="Array"/>
+    <aura:attribute name="weekdays" type="Array"/>
+    <aura:attribute name="header" type="String"/>
+    <aura:handler name="change" action="{!c.doInit}" value="{!v.startDate}"/>
+    
+    <div class="slds-grid">
+        <div  class="slds-p-horizontal--small slds-size--1-of-1 slds-medium-size--1-of-6 slds-large-size--2-of-12" style="max-width:10.0rem;min-width:10.0rem">
+            <div class="slds-text-align--center slds-align--absolute-center slds-text-heading--medium ">{!v.header}</div>
+        </div>
+        <aura:iteration var="w" items="{!v.weekdays}">
+            <div class="slds-p-horizontal--small slds-size--1-of-1 slds-medium-size--1-of-6 slds-large-size--1-of-12">
+                <div class="slds-text-align--center slds-truncate slds-align--absolute-center">{!w}</div>
+            </div>
+        </aura:iteration>
+    </div>
+
+    <div class="slds-grid" style="font-weight: 700;">
+        
+        <div  class="slds-p-horizontal--small slds-size--1-of-1 slds-medium-size--1-of-6 slds-large-size--2-of-12" style="max-width:10.0rem;min-width:10.0rem">
+            <div class="slds-text-align--center slds-align--absolute-center">
+                Team / Name
+            </div>
+        </div>
+        
+        <aura:iteration var="d" items="{!v.dates}">
+            <div class="slds-p-horizontal--small slds-size--1-of-1 slds-medium-size--1-of-6 slds-large-size--1-of-12">
+                <div class="slds-text-align--center slds-truncate slds-align--absolute-center">
+                	<!--  <c:ScheduleCalDate date="{!d}"/>  -->
+	                <div class="slds-truncate slds-align--absolute-center" title="date">{!d}</div>
+                </div>
+            </div>
+        </aura:iteration>
+    </div>
+</aura:component>

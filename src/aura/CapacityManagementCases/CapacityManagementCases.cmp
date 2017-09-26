@@ -1,0 +1,77 @@
+<aura:component controller="CapacityManagementController" implements="force:appHostable,flexipage:availableForAllPageTypes" access="global" >
+    <aura:handler name="init" action="{!c.doInit}" value="{!this}"/>
+    <aura:attribute name="header" type="String"/>
+    <aura:attribute name="caseRqstType" type="String"/>
+    <aura:attribute name="caseRqstGeo" type="String"/>
+    <aura:attribute name="unassignedCases" type="Case[]"/>
+    <aura:attribute name="startDate" type="Date"/>
+    <aura:attribute name="daysToDisplay" type="Integer"/>
+    <aura:handler name="change" action="{!c.changeType}" value="{!v.caseRqstType}"/>
+    
+    <div class="slds-m-top--small slds-m-bottom--small slds-show" aura:id="divHeader">
+        <div class="slds-p-left--medium slds-text-align--left slds-text-heading--medium ">{!v.header}</div>
+    
+		    <div class="slds-grid slds-wrap slds-text-align--left" style="font-weight: 700;">
+		        <div style="max-width:10.0rem;min-width:10.0rem" class="slds-p-horizontal--small slds-size--1-of-1 slds-medium-size--1-of-6 slds-large-size--2-of-12">
+		        	<div class="slds-text-align--left slds-truncate">Account</div>
+		        </div>
+		        <div style="max-width:10.0rem;min-width:10.0rem" class="slds-p-horizontal--small slds-size--1-of-1 slds-medium-size--1-of-6 slds-large-size--2-of-12">
+		            <div class="slds-text-align--left slds-truncate">Opportunity</div>
+		        </div>
+		        <div style="max-width:10.0rem;min-width:10.0rem" class="slds-p-horizontal--small slds-size--1-of-1 slds-medium-size--1-of-6 slds-large-size--2-of-12">
+		            <div class="slds-text-align--left slds-truncate">Requester</div>
+		        </div>
+				<div style="max-width:10.0rem;min-width:10.0rem" class="slds-p-horizontal--small slds-size--1-of-1 slds-medium-size--1-of-6 slds-large-size--2-of-12">
+		            <div class="slds-text-align--left slds-truncate">Days Due</div>
+		        </div>
+		        <div style="max-width:10.0rem;min-width:10.0rem" class="slds-p-horizontal--small slds-size--1-of-1 slds-medium-size--1-of-6 slds-large-size--2-of-12">
+		            <div class="slds-text-align--left slds-truncate">Act Classification</div>
+		        </div>
+		        <div style="max-width:10.0rem;min-width:10.0rem" class="slds-p-horizontal--small slds-size--1-of-1 slds-medium-size--1-of-6 slds-large-size--2-of-12">
+		            <div class="slds-text-align--left slds-truncate">Opty Priority</div>
+		        </div>
+		        <div style="max-width:10.0rem;min-width:10.0rem" class="slds-p-horizontal--small slds-size--1-of-1 slds-medium-size--1-of-6 slds-large-size--2-of-12">
+		            <div class="slds-text-align--left slds-truncate">Est Disc Sales</div>
+		        </div>
+		        <div style="max-width:10.0rem;min-width:10.0rem" class="slds-p-horizontal--small slds-size--1-of-1 slds-medium-size--1-of-6 slds-large-size--2-of-12">
+		            <div class="slds-text-align--left slds-truncate">Requested Service</div>
+		        </div>
+		    </div>
+    </div>
+    <div class="slds-m-top--small slds-m-bottom--small slds-p-bottom--small slds-border--bottom">
+    	<div class="">
+
+    		<div>
+        		<lightning:spinner aura:id="rowSpinner" class="slds-show" variant="brand" size="large" alternativeText="spinner"/>
+        	</div>
+
+        	<!--  this is the 'no results' message  -->
+        	<div class="slds-grid slds-wrap slds-m-top--large slds-m-bottom--large">
+	        	<div class="slds-size--1-of-1 slds-medium-size--1-of-6 slds-large-size--2-of-12">
+	        	</div>
+
+	        	<div class="slds-p-horizontal--small slds-size--1-of-1 slds-medium-size--3-of-6 slds-large-size--6-of-12">
+	        		<ui:message class="slds-hide slds-text-align--center slds-p-top--medium slds-p-bottom--medium" aura:id="rowMsg" title="There are 0 unassigned requests in your Geography" severity="info" closable="false">
+					</ui:message>
+	        	</div>
+	        </div>
+
+	        <aura:iteration var="s" items="{!v.unassignedCases}">
+	        	<c:CapacityManagementCasesRow caseId="{!s.Id}"
+	        		actId="{!s.AccountId}"
+	        		actName="{!s.Account_Name_Text__c}"
+	        		actCls="{!s.Account_Classification__c}"
+	        		oppName="{!s.Opportunity_Name__c}"
+	        		oppAmount="{!s.Opportunity_Est_Disc_Sales__c}"
+	        		caseType="{!s.Type}"
+	        		caseRqstType="{!s.Requested_Service__c}"
+	        		caseRqstBy="{!s.Service_Requested_By_Name__c}"
+	        		caseDays="{!s.Days__c}"/>
+	        </aura:iteration>
+	    </div>
+
+	    
+
+    </div>
+    
+</aura:component>

@@ -1,0 +1,38 @@
+<aura:component controller="ScheduleController">
+    <aura:handler name="init" action="{!c.doInit}" value="{!this}"/>
+    <aura:attribute name="startDate" type="Date"/>
+    <aura:attribute name="daysToDisplay" type="Integer"/>
+    <aura:attribute name="teams" type="Array"/>
+    <aura:attribute name="srnUsers" type="User[]"/>
+    <aura:handler name="change" action="{!c.doInit}" value="{!v.startDate}"/>
+
+    <div>
+		<lightning:spinner aura:id="rowSpinner" class="slds-show" variant="brand" size="large" alternativeText="spinner"/>
+	</div>
+    
+
+    <div class="slds-grid">
+        <!-- team header row -->
+        <div class="slds-col">
+            <aura:iteration var="t" items="{!v.teams}">
+                <div class="slds-section__title slds-section-title--divider slds-text-align--left slds-p-vertical--small" >
+                	{!t}
+                </div>
+                
+                <!-- user row -->
+                <div class="">
+                    <div class="">
+                        <div class="">
+                            <c:CapacitySchedulesUsers team="{!t}"
+                                    srnUsers="{!v.srnUsers}" 
+                                    startDate="{!v.startDate}" 
+                                    daysToDisplay="{!v.daysToDisplay}"/>  
+                        </div>
+                    </div>
+                </div>
+        
+            </aura:iteration>
+
+        </div>
+    </div>
+</aura:component>
