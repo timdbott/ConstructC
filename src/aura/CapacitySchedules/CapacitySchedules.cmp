@@ -5,6 +5,8 @@
     <aura:attribute name="startDate" type="Date"/>
     <aura:attribute name="daysToDisplay" type="Integer"/>
     <aura:attribute name="formattedDateHeader" type="String"/>
+    <aura:attribute name="defaultTeam" type="String" />
+    <aura:attribute name="currentUserId" type="String" />
     
     <div class="steelcase">
         <div class="slds-text-heading--large slds-align--absolute-center slds-m-bottom--large slds-border--bottom slds-box slds-box--small slds-theme--shade slds-text-align--center">Team Schedules</div>
@@ -27,7 +29,7 @@
         </div>
 
         <div class="slds-m-top--small slds-m-bottom--small">
-            <c:CapacitySchedulesTeams startDate="{!v.startDate}" daysToDisplay="{!v.daysToDisplay}"/>
+            <c:CapacitySchedulesTeams startDate="{!v.startDate}" daysToDisplay="{!v.daysToDisplay}" defaultTeam="{!v.defaultTeam}"/>
         </div>
 
 

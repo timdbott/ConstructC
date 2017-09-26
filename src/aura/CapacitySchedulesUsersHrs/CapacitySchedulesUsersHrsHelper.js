@@ -119,19 +119,19 @@
                                     
                                 if (hour > 6) {
                                     schedule = {Date__c: datesInRange[m], Hours__c: hour, Class:"slds-input slds-text-align--center slds-theme--error"};
-	                                   console.log('sOwner: ' + sArray[i].OwnerId__c + ' - date: ' + datesInRange[m] + ' - sDATE: ' + sArray[i].Date__c + ' - HOURS: ' + sArray[i].Hours__c + ' - total: ' + hour);
+	                                   //console.log('sOwner: ' + sArray[i].OwnerId__c + ' - date: ' + datesInRange[m] + ' - sDATE: ' + sArray[i].Date__c + ' - HOURS: ' + sArray[i].Hours__c + ' - total: ' + hour);
                             	} else if (hour > 4) {
 	                                //hour = hour + sArray[i].Hours__c;
 	                                schedule = {Date__c: datesInRange[m], Hours__c: hour, Class:"slds-input slds-text-align--center slds-theme--warning"};
-                                        console.log('sOwner: ' + sArray[i].OwnerId__c + ' - date: ' + datesInRange[m] + ' - sDATE: ' + sArray[i].Date__c + ' - HOURS: ' + sArray[i].Hours__c + ' - total: ' + hour);
+                                        //console.log('sOwner: ' + sArray[i].OwnerId__c + ' - date: ' + datesInRange[m] + ' - sDATE: ' + sArray[i].Date__c + ' - HOURS: ' + sArray[i].Hours__c + ' - total: ' + hour);
 	                            } else if (hour > 0) {
                                     //hour = hour + sArray[i].Hours__c;
                                     schedule = {Date__c: datesInRange[m], Hours__c: hour, Class:"slds-input slds-text-align--center slds-theme--success"};
-                                        console.log('sOwner: ' + sArray[i].OwnerId__c + ' - date: ' + datesInRange[m] + ' - sDATE: ' + sArray[i].Date__c + ' - HOURS: ' + sArray[i].Hours__c + ' - total: ' + hour);
+                                        //console.log('sOwner: ' + sArray[i].OwnerId__c + ' - date: ' + datesInRange[m] + ' - sDATE: ' + sArray[i].Date__c + ' - HOURS: ' + sArray[i].Hours__c + ' - total: ' + hour);
                                 } else {
 	                            	//hour = hour + sArray[i].Hours__c;
 	                                schedule = {Date__c: datesInRange[m], Hours__c: hour, Class:"slds-input slds-text-align--center slds-theme--default"};
-                                        console.log('sOwner: ' + sArray[i].OwnerId__c + ' - date: ' + datesInRange[m] + ' - sDATE: ' + sArray[i].Date__c + ' - HOURS: ' + sArray[i].Hours__c + ' - total: ' + hour);
+                                        //console.log('sOwner: ' + sArray[i].OwnerId__c + ' - date: ' + datesInRange[m] + ' - sDATE: ' + sArray[i].Date__c + ' - HOURS: ' + sArray[i].Hours__c + ' - total: ' + hour);
 	                            }
                             }
 

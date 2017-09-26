@@ -4,7 +4,8 @@
 
         var spinner = component.find('rowSpinner');
 
-        helper.retrieveCurrentUser(component, event);
+        //helper.retrieveCurrentUser(component, event);
+        console.log('CapacitySchedulesUsers.doInit defaultTeam: ' + component.get("v.defaultTeam"));
         
         $A.util.toggleClass(spinner, "slds-show");
 
@@ -22,13 +23,26 @@
                     teams = [], 
                     users = [],
                     results = [],
-                    i, j, name, team;
+                    i, j, name, team, defaultTeam;
 
-				component.set("v.srnUsers", allUsers);
+                component.set("v.srnUsers", allUsers);
+                defaultTeam = component.get("v.defaultTeam");
 
                 // put teams into an array of strings
                 if (allUsers === null || allUsers === "" || allUsers === 'null') {
                     console.log('allUsers list is null');
+                } else if (defaultTeam !== "" || defaultTeam !== "All") {
+                    for (i = 0, j = allUsers.length; i < j; i++) {
+                        name = allUsers[i].Name;
+                        team = allUsers[i].srNetwork_Team__c;
+
+                        // if the current user's default team equals this then show it else show all teams
+                        if (defaultTeam === team) {
+                            users.push(team);
+                        }
+
+                        console.log('name: ' + name + ' - team: ' + team);
+                    }
                 } else {
                     for (i = 0, j = allUsers.length; i < j; i++) {
                         name = allUsers[i].Name;

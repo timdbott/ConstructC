@@ -3,6 +3,8 @@
         
         var d = new Date(), year, month, day, fDate, initDate;
         component.set("v.daysToDisplay",14);
+
+        helper.retrieveCurrentUser(component, event);
         
         if (component.get("v.startDate") != null) {
             fDate = component.get("v.startDate");
