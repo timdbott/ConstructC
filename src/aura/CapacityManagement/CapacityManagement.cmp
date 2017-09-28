@@ -35,7 +35,7 @@
         </div>
 
 		<!-- show all srn users and schedules for current user's geo  -->
-        <div class="slds-grid slds-m-top--xx-small" style="width:95%">
+        <div class="slds-grid slds-m-top--xx-small">
             <div class="slds-col">
                 <c:CapacitySchedules />
             </div>

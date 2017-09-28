@@ -10,10 +10,10 @@
     <aura:attribute name="selectedTeam" type="Array" />
     <aura:attribute name="currentUserId" type="String" />
     
-    <div class="steelcase">
+    <div class="steelcase" style="width:95%">
         <div class="slds-text-heading--large slds-align--absolute-center slds-m-bottom--large slds-border--bottom slds-box slds-box--small slds-theme--shade slds-text-align--center">Team Schedules</div>
         <div class="slds-grid slds-m-top--small slds-p-bottom--small slds-border--bottom">
-            <div class="slds-size--3-of-12 slds-align--absolute-center">
+            <div class="slds-size--5-of-12 slds-align--absolute-center">
                 <span>
                 	<lightning:buttonIcon aura:id="btn_prevWk" iconName="utility:chevronleft" onclick="{!c.changeDate}" alternativeText="previous week" />
                 </span>
@@ -26,7 +26,7 @@
             </div>
 
             <!-- Case Request Type picklist -->
-            <div class="slds-form--horizontal slds-text-align--left slds-p-left--xx-large">
+            <div class="slds-size--5-of-12 slds-form--horizontal slds-text-align--center slds-p-left--xx-large">
                 <div class="slds-picklist slds-dropdown-trigger slds-dropdown-trigger--click">
                     <lightning:select name="srNetworkTeams" label="Team  " aura:id="srNetworkTeams" value="{!v.selectedTeam}">
                         <option text="{!v.defaultTeam}" value="{!v.defaultTeam}"/>
@@ -43,7 +43,7 @@
             <c:CapacitySchedulesHeader header="" startDate="{!v.startDate}" daysToDisplay="{!v.daysToDisplay}"/>
         </div>
 
-        <div class="slds-m-top--small slds-m-bottom--small">
+        <div class="slds-m-top--small slds-m-bottom--small" style="width:95%">
             <c:CapacitySchedulesTeams startDate="{!v.startDate}" daysToDisplay="{!v.daysToDisplay}" defaultTeam="{!v.defaultTeam}"/>
         </div>
 
