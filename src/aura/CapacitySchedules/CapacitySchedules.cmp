@@ -32,7 +32,7 @@
             <!-- Case Request Type picklist -->
             <div class="slds-size--5-of-12 slds-form--horizontal slds-text-align--center slds-p-left--xx-large">
                 <div class="slds-picklist slds-dropdown-trigger slds-dropdown-trigger--click">
-                    <lightning:select name="srNetworkTeams" label="Team  " aura:id="srNetworkTeams" value="{!v.defaultTeam}">
+                    <lightning:select name="srNetworkTeams" label="Team  " aura:id="srNetworkTeams" value="{!v.selectedTeam}">
                         <option text="{!v.defaultTeam}" value="{!v.defaultTeam}"/>
                         <aura:iteration var="t" items="{!v.srNetworkTeams}">
                             <option text="{!t}" value="{!t}"/>

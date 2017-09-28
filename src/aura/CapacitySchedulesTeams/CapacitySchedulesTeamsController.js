@@ -8,6 +8,10 @@
         console.log('CapacitySchedulesUsers.doInit defaultTeam: ' + component.get("v.defaultTeam"));
         console.log('CapacitySchedulesUsers.doInit selectedTeam: ' + component.get("v.selectedTeam"));
         
+        if (component.get("v.selectedTeam") === "undefined") {
+            // go with defaultTeam...
+        }
+        
         $A.util.toggleClass(spinner, "slds-show");
 
         // call the controller method that returns schedule__c records for this case

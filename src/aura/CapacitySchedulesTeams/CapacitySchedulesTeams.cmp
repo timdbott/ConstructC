@@ -12,6 +12,7 @@
     <aura:handler name="init" action="{!c.doInit}" value="{!this}"/>
     <aura:handler name="change" action="{!c.doInit}" value="{!v.startDate}"/>
     <aura:handler name="change" action="{!c.doInit}" value="{!v.defaultTeam}"/>
+    <aura:handler name="change" action="{!c.doInit}" value="{!v.selectedTeam}"/>
 
     <div>
 		<lightning:spinner aura:id="rowSpinner" class="slds-show" variant="brand" size="large" alternativeText="spinner"/>
