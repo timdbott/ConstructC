@@ -80,5 +80,10 @@
             console.log('CapacitySchedulesController.changeDate: cmp was refreshed or wrong date format -> ' + startDate);
         }
 
+    },
+
+    changeTeamSelection : function(component, event, helper) {
+
+        
     }
 })

@@ -6,6 +6,7 @@
 
         //helper.retrieveCurrentUser(component, event);
         console.log('CapacitySchedulesUsers.doInit defaultTeam: ' + component.get("v.defaultTeam"));
+        console.log('CapacitySchedulesUsers.doInit selectedTeam: ' + component.get("v.selectedTeam"));
         
         $A.util.toggleClass(spinner, "slds-show");
 

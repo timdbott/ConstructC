@@ -1,12 +1,17 @@
 <aura:component controller="ScheduleController">
-    <aura:handler name="init" action="{!c.doInit}" value="{!this}"/>
+    
     <aura:attribute name="startDate" type="Date"/>
     <aura:attribute name="daysToDisplay" type="Integer"/>
     <aura:attribute name="teams" type="Array"/>
     <aura:attribute name="srnUsers" type="User[]"/>
     <aura:attribute name="defaultTeam" type="String" />
     <aura:attribute name="currentUserId" type="String" />
+    <aura:attribute name="selectedTeam" type="String" />
+
+    <!--  EVENTS -->
+    <aura:handler name="init" action="{!c.doInit}" value="{!this}"/>
     <aura:handler name="change" action="{!c.doInit}" value="{!v.startDate}"/>
+    <aura:handler name="change" action="{!c.doInit}" value="{!v.defaultTeam}"/>
 
     <div>
 		<lightning:spinner aura:id="rowSpinner" class="slds-show" variant="brand" size="large" alternativeText="spinner"/>
